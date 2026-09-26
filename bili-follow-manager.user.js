@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         B 站关注管理器
 // @namespace    https://github.com/johnbitcn/BiliFavUI
+// @license      MIT
 // @version      0.3.4
 // @description  在自己的关注页批量管理分组、特别关注、取消关注和黑名单
 // @match        https://space.bilibili.com/*/relation/follow*
