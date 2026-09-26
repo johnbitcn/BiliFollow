@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         B 站关注管理器
 // @namespace    https://github.com/johnbitcn/BiliFavUI
-// @version      0.3.3
+// @version      0.3.4
 // @description  在自己的关注页批量管理分组、特别关注、取消关注和黑名单
 // @match        https://space.bilibili.com/*/relation/follow*
 // @grant        GM_xmlhttpRequest
@@ -83,7 +83,7 @@
       #${ROOT_ID} .bfm-text-button { border: 0; background: transparent; color: #536171; padding: 7px 9px; }
       #${ROOT_ID} .bfm-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 15px 24px; background: white; }
       #${ROOT_ID} .bfm-search { flex: 1 1 240px; min-width: 180px; border: 1px solid #d8e0e8; border-radius: 9px; padding: 10px 12px; outline-color: #00a1d6; font: inherit; }
-      #${ROOT_ID} .bfm-select { min-width: 150px; max-width: 100%; border: 1px solid #d8e0e8; border-radius: 9px; background: white; padding: 9px 12px; font: inherit; }
+      #${ROOT_ID} .bfm-select { min-width: 150px; max-width: 100%; border: 1px solid #d8e0e8; border-radius: 9px; background: white; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23536171' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px 16px; padding: 9px 36px 9px 12px; font: inherit; appearance: none; -webkit-appearance: none; cursor: pointer; }
       #${ROOT_ID} .bfm-filters { display: flex; flex-wrap: wrap; gap: 7px; max-height: 104px; overflow: auto; padding: 0 24px 13px; background: white; }
       #${ROOT_ID} .bfm-filter-heading { padding: 0 24px 8px; background: white; color: #748092; font-size: 12px; }
       #${ROOT_ID} .bfm-filter { border: 1px solid #d8e0e8; border-radius: 999px; background: white; color: #536171; padding: 5px 11px; font-size: 12px; }
