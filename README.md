@@ -1,8 +1,8 @@
-# BiliFollow
+# BiliFollow · B 站关注管理油猴脚本
 
 **把 Bilibili 关注列表，变成你的管理工作台。**
 
-在自己的关注页打开独立面板：按分组与关键词定位账号，核对名单，然后批量处理。一个 Tampermonkey 脚本，无需离开当前页面。
+在自己的关注页打开独立面板：按分组与关键词定位账号，批量取消关注、调整特别关注、整理分组或加入黑名单。一个 Tampermonkey 脚本，无需离开当前页面。
 
 `USERSCRIPT` · `BILIBILI` · `BATCH TOOLS` · `MIT`
 
