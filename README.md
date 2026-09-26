@@ -1,56 +1,50 @@
-# BiliFollow · B 站关注管理油猴脚本
+# BiliFollow
 
-**把 Bilibili 关注列表，变成你的管理工作台。**
+[简体中文](./README.zh-CN.md)
 
-在自己的关注页打开独立面板：按分组与关键词定位账号，批量取消关注、调整特别关注、整理分组或加入黑名单。一个 Tampermonkey 脚本，无需离开当前页面。
+**A simpler way to tidy up your Bilibili Following list.**
 
-`USERSCRIPT` · `BILIBILI` · `BATCH TOOLS` · `MIT`
+Following too many accounts to manage them one by one? BiliFollow adds a manager to **your own Following page**. Find the accounts you want, select them, and make changes together.
 
----
+## What can I do with it?
 
-## 01 / 能做什么
+- **Find people faster.** Search by name, bio, or user ID. Show only ungrouped accounts, special follows, or accounts in one or more groups.
+- **Organize your follows.** Add accounts to a group while keeping their current groups, or move them to a group instead.
+- **Make changes in one go.** Add or remove special follows, unfollow selected accounts, or add them to your blocklist.
+- **Stay in control.** Select people individually or select everyone in the current results. Review the list before anything changes.
 
-| 场景 | 功能 |
+## Get started
+
+1. Install and enable [Tampermonkey](https://www.tampermonkey.net/) in your browser.
+2. Open the [BiliFollow script](./bili-follow-manager.user.js) on GitHub and click **Raw**. Copy all of the text.
+3. In Tampermonkey, choose **Create a new script**. Replace the starter text with what you copied, then save.
+4. Sign in to Bilibili and open **your own Following (关注) page**. Refresh the page, then click **管理关注** (Manage Following) near the bottom right.
+
+The manager's buttons currently use Chinese labels.
+
+## Use the manager
+
+1. Search or choose the groups you want to see.
+2. Tick individual accounts, or click **选中筛选结果** (Select filtered results). Your selections stay selected if you change the search or filters, so check the selected count before continuing.
+3. Choose an action at the bottom of the panel. For group changes, choose the destination group too.
+4. Check the names and action in the confirmation window, then confirm.
+
+The action menu uses these labels:
+
+| In the menu | What it does |
 | --- | --- |
-| 找到目标 | 按昵称、简介或 UID 搜索；只看未分组、特别关注或指定分组，支持同时筛选多个分组。 |
-| 整理分组 | 批量加入分组并保留原分组，或移至分组并替换原分组。 |
-| 调整关系 | 批量设为／取消特别关注、取消关注、加入黑名单。 |
-| 控制范围 | 单个勾选或选中当前筛选结果；切换筛选时保留已选账号，执行前再次核对名单。 |
+| 取消关注 | Unfollow |
+| 加入分组（保留原分组） | Add to a group, keeping current groups |
+| 移至分组（替换原分组） | Move to a group, replacing current groups |
+| 设为特别关注 / 取消特别关注 | Add / remove a special follow |
+| 加入黑名单 | Block |
 
-```text
-筛选  →  选择  →  核对  →  执行
-```
+You can click **停止** (Stop) while an action is running. Changes already completed will remain; the script cannot undo them automatically. Unfollowing can also affect special or mutual follows, and adding someone to your blocklist may unfollow them.
 
-## 02 / 快速安装
+## Need help?
 
-1. 安装并启用 [Tampermonkey](https://www.tampermonkey.net/)。
-2. 在 Tampermonkey 中新建脚本，将 [`bili-follow-manager.user.js`](./bili-follow-manager.user.js) 的全部内容粘贴进去并保存。支持本地脚本安装的浏览器也可以直接打开该文件。
-3. 登录 Bilibili，进入**自己的关注页**，点击右下角的「管理关注」。
+- **No manager button?** Make sure Tampermonkey is enabled, you are signed in, and you are viewing your **own** Following page. Then refresh it.
+- **The action stopped with `-352`?** Bilibili declined the request. Wait before trying again. Accounts already processed stay changed; accounts not yet processed remain selected.
+- **Want to start over?** Click **重新加载** (Reload) to refresh the list. This also clears your selections and group filters.
 
-## 03 / 使用方式
-
-面板会逐页读取关注账号与分组。可以点击「全部」查看完整列表，点击「未分组」只看未加入自建分组的账号，或选择一个、多个分组查看其中任一分组的账号。「特别关注」有独立筛选项；只有特别关注而没有自建分组的账号也属于「未分组」。分组筛选可以与搜索同时使用。
-
-选中账号后，在底部选择批量操作。进行分组操作时，还需选定目标分组。点击执行按钮，先在确认框中核对**操作和账号名单**，再确认执行。
-
-### 执行期间
-
-- 请求逐个发送，间隔 **3 秒**，没有每批 20 人的上限。点击「停止」会在当前请求结束后停止。
-- 登录、接口或网络出错时会停止；尚未处理的账号保持选中，可检查后继续。已成功的操作不会自动撤销。
-- 点击「重新加载」会重新读取列表，并清空当前选择与分组筛选。
-
-## 04 / 遇到 `-352`？
-
-`-352` 表示 Bilibili 拒绝了该次请求。如果已成功处理一些账号，随后出现 `-352`，重试又在第一人失败，可能是操作频率或累计次数触发的限制尚未解除。**3 秒间隔不能保证避开平台限制。**脚本遇到此错误会立即停止，不会自动重试。请暂停操作，待限制解除后再少量验证，避免反复快速重试。
-
-## 05 / 适用范围与提醒
-
-脚本只在 `https://space.bilibili.com/你的UID/relation/follow` 形式的页面，且登录 UID 与页面 UID 相同时显示。它使用 Bilibili 的关注列表、分组和关系操作接口，不会把账号列表或登录校验信息发送到其他站点。
-
-接口变化、访问受限或网站限流时，面板会显示错误。列表未读完时只能操作已读取的账号；分组读取失败时无法进行分组操作，其他操作仍可使用。
-
-> **执行前请核对名单。**取消关注可能影响特别关注、互相关注等关系；加入黑名单也可能解除关注。脚本不提供自动撤销功能。
-
----
-
-以 [MIT 许可证](./LICENSE) 发布。
+Released under the [MIT License](./LICENSE).
